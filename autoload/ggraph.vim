@@ -23,8 +23,8 @@ function ggraph#LoadNCommitsInCurrentBuffer(n)
     endif
     if exists(":AnsiEsc") == 2
         call ggraph#OpenGitGraphBuffer()
-        %delete
-        silent execute "read! git " . g:ggraph_log_base_cmd . " --color=always --format=ggraphcolor " . l:numCommits
+        silent %delete
+        silent execute "read !git " . g:ggraph_log_base_cmd . " --color=always --format=ggraphcolor " . l:numCommits
         if ggraph#AnsiEscIsOff()
             AnsiEsc
         endif
@@ -38,9 +38,9 @@ function ggraph#OpenGitGraphBuffer()
         return
     endif
     if ggraph#BufferIsEmpty()
-        edit Git graph
+        edit Git\ graph
     else
-        vnew Git graph
+        vnew Git\ graph
     endif
     setlocal buftype=nofile
     setlocal noswapfile
